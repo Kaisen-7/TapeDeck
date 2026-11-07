@@ -1,0 +1,1989 @@
+/* ==========================================================================
+   DEK-KASET M-88 | PRECISION VINTAGE HI-FI INDUSTRIAL SKEUOMORPHISM
+   ========================================================================== */
+
+:root {
+  --chassis-metal-top: #363a43;
+  --chassis-metal-mid: #252830;
+  --chassis-metal-bot: #1b1d22;
+  --panel-inset-bg: #121417;
+  --panel-border-dark: #0d0f12;
+  --panel-bevel-light: rgba(255, 255, 255, 0.12);
+
+  --vfd-cyan: #38ef7d;
+  --vfd-cyan-glow: rgba(56, 239, 125, 0.35);
+  --vfd-amber: #f59e0b;
+  --vfd-amber-glow: rgba(245, 158, 11, 0.35);
+  --vu-lamp: #fff6db;
+
+  --btn-width: 78px;
+  --btn-height: 52px;
+}
+
+/* Base Reset & Industrial Typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 25%, #1e2127 0%, #111317 60%, #0a0b0d 100%);
+  color: #e2e8f0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 32px 16px 64px;
+  transition: background 0.4s ease;
+}
+
+/* Atmosphere: Midnight Warm Desk Mode */
+body.mode-midnight {
+  background: radial-gradient(circle at 60% 15%, #2a221a 0%, #14110e 55%, #080706 100%);
+}
+
+body.mode-midnight .deck-container {
+  box-shadow:
+    0 0 100px rgba(245, 158, 11, 0.12),
+    0 32px 80px rgba(0, 0, 0, 0.95),
+    inset 0 1px 1px rgba(255, 245, 215, 0.25),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Hand-Written & Monospace Typography */
+.font-marker {
+  font-family: 'Permanent Marker', cursive, sans-serif;
+}
+.font-handwrite {
+  font-family: 'Caveat', cursive, sans-serif;
+}
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ==========================================================================
+   APP HEADER / RACK SYSTEM BAR
+   ========================================================================== */
+
+.app-header {
+  width: 100%;
+  max-width: 880px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 14px 24px;
+  background: #181a1f;
+  border: 1px solid #2d3139;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-badge-symbol {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #64748b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.symbol-circle {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+
+.brand-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+
+.brand-text h1 {
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  font-weight: 900;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-text .badge-model {
+  font-size: 0.65rem;
+  background: #f59e0b;
+  color: #0f172a;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.08em;
+}
+
+.brand-text p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.header-btn {
+  background: #23262d;
+  color: #cbd5e1;
+  border: 1px solid #3d434f;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.12s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.header-btn:hover {
+  background: #2f343e;
+  border-color: #64748b;
+  color: #fff;
+}
+
+.header-btn.record-btn {
+  background: #831843;
+  background: linear-gradient(180deg, #b91c1c 0%, #7f1d1d 100%);
+  border-color: #dc2626;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(185, 28, 28, 0.4);
+}
+
+.header-btn.record-btn:hover {
+  background: linear-gradient(180deg, #dc2626 0%, #991b1b 100%);
+}
+
+.rec-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse-red 1.4s infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.85); }
+}
+
+.status-indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f59e0b;
+}
+
+/* ==========================================================================
+   CASSETTE DECK MAIN CHASSIS (PRECISION BRUSHED METAL SKEUOMORPHISM)
+   ========================================================================== */
+
+.deck-container {
+  width: 100%;
+  max-width: 880px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.015) 0px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px,
+      transparent 2px
+    ),
+    linear-gradient(180deg, #383d47 0%, #262931 18%, #1c1e24 100%);
+  border-radius: 12px;
+  border: 1px solid #4a5260;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.95),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.9);
+  position: relative;
+  padding: 30px 26px;
+  perspective: 1400px;
+}
+
+/* Precision Hex Milled Screws on Chassis */
+.deck-screw {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #94a3b8 20%, #475569 80%);
+  position: absolute;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.8), 0 1px 1px rgba(255,255,255,0.2);
+}
+.deck-screw::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 60%;
+  height: 1.5px;
+  background: #0f172a;
+  transform: translateY(-50%) rotate(45deg);
+}
+.deck-screw::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 60%;
+  height: 1.5px;
+  background: #0f172a;
+  transform: translateY(-50%) rotate(-45deg);
+}
+.screw-tl { top: 12px; left: 14px; }
+.screw-tr { top: 12px; right: 14px; }
+.screw-bl { bottom: 12px; left: 14px; }
+.screw-br { bottom: 12px; right: 14px; }
+
+/* Deck Top Panel */
+.deck-top-panel {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  background: #101215;
+  border-radius: 8px;
+  padding: 16px 20px;
+  border: 1px solid #282c35;
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.85);
+  margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   SIMPSON ANALOG VU METERS (INCANDESCENT TUNGSTEN BACKLIT)
+   ========================================================================== */
+
+.vu-meters-cluster {
+  display: flex;
+  gap: 12px;
+}
+
+.vu-meter {
+  width: 136px;
+  height: 68px;
+  background: radial-gradient(circle at 50% 120%, #fff7df 0%, #faecd0 50%, #dfceb0 100%);
+  border-radius: 4px;
+  border: 2px solid #20242b;
+  box-shadow:
+    inset 0 3px 6px rgba(0,0,0,0.5),
+    inset 0 0 12px rgba(245, 158, 11, 0.15),
+    0 2px 4px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.vu-meter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.vu-scale {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.vu-markings {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7.5px;
+  font-weight: 800;
+  color: #1e293b;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+.vu-red-zone {
+  color: #dc2626;
+}
+
+.vu-meter-arc {
+  position: absolute;
+  top: 13px;
+  left: 6px;
+  right: 6px;
+  height: 1px;
+  background: #334155;
+}
+
+.vu-label {
+  position: absolute;
+  bottom: 3px;
+  width: 100%;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #475569;
+}
+
+.vu-needle {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 1.5px;
+  height: 52px;
+  background: #111827;
+  transform-origin: bottom center;
+  transform: rotate(-35deg);
+  transition: transform 0.08s cubic-bezier(0.2, 0.85, 0.4, 1);
+  box-shadow: 1px 0 2px rgba(0,0,0,0.4);
+}
+
+.vu-needle-pivot {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: #181a1f;
+  border: 1px solid #334155;
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   CENTER DISPLAY: FL DISPLAY & ODOMETER COUNTER
+   ========================================================================== */
+
+.deck-display-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.tape-counter-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #090a0d;
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid #232730;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.9);
+}
+
+.counter-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  color: #64748b;
+  font-weight: 800;
+}
+
+.counter-digits {
+  display: flex;
+  gap: 2px;
+}
+
+.counter-digit {
+  background: #15181e;
+  color: #f8fafc;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 2px;
+  border: 1px solid #272a31;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.9);
+}
+
+.counter-reset-btn {
+  background: #272a31;
+  border: 1px solid #3e4451;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 3px 6px;
+  border-radius: 2px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: all 0.1s ease;
+}
+.counter-reset-btn:hover {
+  background: #3e4451;
+  color: #fff;
+}
+
+/* Vacuum Fluorescent Matrix Display (VFD) */
+.vfd-track-screen {
+  background: #06080a;
+  border: 1px solid #1a1f26;
+  border-radius: 4px;
+  padding: 7px 16px;
+  min-width: 280px;
+  text-align: center;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.95);
+}
+
+.vfd-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.18em;
+  color: #38bdf8;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.vfd-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4ade80;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+  letter-spacing: 0.05em;
+}
+
+/* LED Matrix */
+.led-indicators-cluster {
+  display: flex;
+  gap: 16px;
+}
+
+.led-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.led-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.led-bulb {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #1f242d;
+  border: 1px solid #0f1216;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+  transition: all 0.15s ease;
+}
+
+.led-bulb.led-power.active {
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e, inset 0 1px 1px #fff;
+}
+
+.led-bulb.led-play.active {
+  background: #f59e0b;
+  box-shadow: 0 0 10px #f59e0b, inset 0 1px 1px #fff;
+}
+
+.led-bulb.led-dolby.active {
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8, inset 0 1px 1px #fff;
+}
+
+.led-bulb.led-end.blinking {
+  background: #ef4444;
+  box-shadow: 0 0 12px #ef4444, inset 0 1px 1px #fff;
+  animation: blink-fast 0.6s infinite;
+}
+
+@keyframes blink-fast {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* ==========================================================================
+   CASSETTE WELL / MECHANISM BAY
+   ========================================================================== */
+
+.cassette-bay {
+  background: #0d0f12;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow:
+    inset 0 12px 28px rgba(0, 0, 0, 0.95),
+    0 1px 1px rgba(255, 255, 255, 0.1);
+  border: 2px solid #20242b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 380px;
+}
+
+/* Manual Spool Tool Pill */
+.pencil-tool-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 30;
+  background: #1c2027;
+  color: #94a3b8;
+  border: 1px solid #333a46;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.12s ease;
+}
+
+.pencil-tool-btn:hover {
+  background: #252b35;
+  color: #fff;
+  border-color: #4b5563;
+}
+
+.pencil-tool-btn.active {
+  background: #d97706;
+  border-color: #f59e0b;
+  color: #000;
+  font-weight: 900;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+.pencil-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #94a3b8;
+}
+.pencil-tool-btn.active .pencil-dot {
+  background: #000;
+}
+
+/* Reel Spool Highlighting in Manual Spool Mode */
+.cassette-bay.pencil-mode-active .reel-gear {
+  cursor: pointer;
+  box-shadow: 0 0 0 2px #f59e0b, 0 0 10px rgba(245, 158, 11, 0.7) !important;
+  animation: pulse-spool-gear 1s infinite alternate;
+}
+
+@keyframes pulse-spool-gear {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+/* ==========================================================================
+   AUTHENTIC SKEUOMORPHIC PENCIL WINDING OBJECT & ANIMATION
+   ========================================================================== */
+
+.pencil-crank-actor {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 94px); /* Default Left Spool */
+  transform: translate(-50%, -100%);
+  width: 24px;
+  height: 160px;
+  z-index: 60;
+  pointer-events: none;
+  transition: left 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  filter: drop-shadow(4px 10px 10px rgba(0, 0, 0, 0.75));
+}
+
+.pencil-crank-actor.target-right {
+  left: calc(50% + 94px); /* Right Spool */
+}
+
+/* Pencil Pivot and Crank Revolving */
+.pencil-crank-pivot {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%; /* Pivot around the lead tip! */
+  transform: rotate(32deg);
+  transition: transform 0.15s ease-out;
+}
+
+/* When Cranking is active */
+.pencil-crank-actor.cranking .pencil-crank-pivot {
+  animation: pencil-crank-motion 0.38s linear infinite;
+}
+
+.pencil-crank-actor.cranking-rev .pencil-crank-pivot {
+  animation: pencil-crank-motion-rev 0.38s linear infinite;
+}
+
+@keyframes pencil-crank-motion {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pencil-crank-motion-rev {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* The Hexagonal Pencil Body */
+.pencil-body {
+  width: 14px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Eraser */
+.pencil-eraser {
+  width: 12px;
+  height: 15px;
+  background: linear-gradient(90deg, #f472b6 0%, #fb7185 60%, #e11d48 100%);
+  border-radius: 4px 4px 0 0;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Ferrule (Metal Band with Indented Rings) */
+.pencil-ferrule {
+  width: 14px;
+  height: 16px;
+  background: linear-gradient(90deg, #94a3b8 0%, #e2e8f0 40%, #ffffff 60%, #64748b 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-top: 1px solid #475569;
+  border-bottom: 1px solid #334155;
+}
+
+.ferrule-ring {
+  width: 100%;
+  height: 1px;
+  background: #475569;
+}
+
+/* Hexagonal Pencil Shaft */
+.pencil-shaft {
+  width: 14px;
+  height: 85px;
+  display: flex;
+}
+
+.pencil-facet {
+  height: 100%;
+}
+.facet-left {
+  width: 4px;
+  background: #d97706; /* Shaded side */
+}
+.facet-center {
+  width: 6px;
+  background: #f59e0b; /* Bright highlight */
+  position: relative;
+  overflow: hidden;
+}
+.pencil-brand-text {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 6px;
+  font-weight: 800;
+  color: #78350f;
+  white-space: nowrap;
+  letter-spacing: 0.1em;
+}
+.facet-right {
+  width: 4px;
+  background: #b45309; /* Deep shadow */
+}
+
+/* Sharpened Natural Cedar Wood Cone */
+.pencil-wood-cone {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 22px solid #fde68a;
+}
+
+/* Graphite 2B Lead Core */
+.pencil-graphite-tip {
+  width: 0;
+  height: 0;
+  margin-top: -8px;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 10px solid #1e293b;
+}
+
+/* Precision Tape Mechanism Behind the Cassette */
+.bay-head-housing {
+  position: absolute;
+  bottom: 12px;
+  width: 260px;
+  height: 26px;
+  background: linear-gradient(180deg, #2a2f38 0%, #15181e 100%);
+  border-radius: 3px;
+  border: 1px solid #3c424f;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 16px;
+  opacity: 0.75;
+}
+
+.bay-head-unit {
+  width: 22px;
+  height: 14px;
+  background: #cbd5e1;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.bay-playback-head {
+  background: #e2e8f0;
+  border: 1px solid #94a3b8;
+}
+
+.bay-pinch-roller {
+  width: 14px;
+  height: 14px;
+  background: #111827;
+  border-radius: 50%;
+  border: 1px solid #374151;
+}
+
+.bay-capstan {
+  width: 6px;
+  height: 6px;
+  background: #cbd5e1;
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(0,0,0,0.9);
+}
+
+/* ==========================================================================
+   THE 3D CASSETTE TAPE (HIGH-END CASSETTE HOUSING)
+   ========================================================================== */
+
+.cassette-flipper {
+  width: 580px;
+  height: 350px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cassette-flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+.cassette-flipper.flipping-anim {
+  animation: flip-lift 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes flip-lift {
+  0% { transform: rotateY(0deg) scale(1) translateZ(0); }
+  40% { transform: rotateY(90deg) scale(1.06) translateZ(50px); }
+  100% { transform: rotateY(180deg) scale(1) translateZ(0); }
+}
+
+.cassette-flipper.flipping-anim-reverse {
+  animation: flip-lift-rev 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes flip-lift-rev {
+  0% { transform: rotateY(180deg) scale(1) translateZ(0); }
+  40% { transform: rotateY(90deg) scale(1.06) translateZ(50px); }
+  100% { transform: rotateY(0deg) scale(1) translateZ(0); }
+}
+
+.cassette-side {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.7),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.cassette-side.side-b {
+  transform: rotateY(180deg);
+}
+
+/* Authentic Cassette Shell Colors */
+.theme-retro-orange .cassette-side {
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 60%, #7c2d12 100%);
+  border: 4px solid #6c2710;
+}
+.theme-clear-black .cassette-side {
+  background: linear-gradient(135deg, #27272a 0%, #18181b 60%, #09090b 100%);
+  border: 4px solid #3f3f46;
+}
+.theme-pastel-blue .cassette-side {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 60%, #075985 100%);
+  border: 4px solid #0c4a6e;
+}
+.theme-cyber-neon .cassette-side {
+  background: linear-gradient(135deg, #7e22ce 0%, #581c87 60%, #3b0764 100%);
+  border: 4px solid #4a044e;
+}
+.theme-vintage-ivory .cassette-side {
+  background: linear-gradient(135deg, #d6d3d1 0%, #a8a29e 60%, #78716c 100%);
+  border: 4px solid #57534e;
+}
+.theme-blood-red .cassette-side {
+  background: linear-gradient(135deg, #b91c1c 0%, #991b1b 60%, #7f1d1d 100%);
+  border: 4px solid #631717;
+}
+
+/* Precision Cassette Screws */
+.cassette-screw {
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #e2e8f0 30%, #64748b 100%);
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.9);
+}
+.cassette-screw::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 60%;
+  height: 1.5px;
+  background: #334155;
+  transform: translateY(-50%) rotate(35deg);
+}
+.c-screw-tl { top: 9px; left: 9px; }
+.c-screw-tr { top: 9px; right: 9px; }
+.c-screw-bl { bottom: 9px; left: 9px; }
+.c-screw-br { bottom: 9px; right: 9px; }
+.c-screw-center { top: 12px; left: 50%; transform: translateX(-50%); }
+
+/* Authentic Cassette Paper Label (Millimeter Grid Pattern) */
+.cassette-label {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 11px, rgba(0, 0, 0, 0.04) 11px, rgba(0, 0, 0, 0.04) 12px),
+    repeating-linear-gradient(90deg, transparent, transparent 11px, rgba(0, 0, 0, 0.04) 11px, rgba(0, 0, 0, 0.04) 12px),
+    #fcfbf8;
+  border: 1px solid #dcdad3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.label-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #1e293b;
+  padding-bottom: 6px;
+}
+
+.label-side-stamp {
+  background: #b91c1c;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.1em;
+}
+.label-side-stamp.stamp-side-b {
+  background: #1d4ed8;
+}
+
+.label-tape-brand {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #475569;
+}
+
+.tape-sticker-badge {
+  display: none;
+  background: #fef08a;
+  color: #854d0e;
+  border: 1.5px dashed #ca8a04;
+  border-radius: 2px;
+  padding: 1px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+}
+.tape-sticker-badge.active {
+  display: inline-block;
+}
+
+.label-title-area {
+  margin-top: 4px;
+}
+
+.label-title-text {
+  font-size: 1.25rem;
+  color: #0f172a;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.02em;
+}
+
+.label-from-text {
+  font-size: 0.92rem;
+  color: #64748b;
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Central Acrylic Window */
+.tape-window-container {
+  width: 310px;
+  height: 92px;
+  background: rgba(10, 15, 24, 0.92);
+  border-radius: 8px;
+  border: 2px solid #1e293b;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: inset 0 6px 12px rgba(0,0,0,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  overflow: hidden;
+}
+
+.tape-window-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.window-gauge-ruler {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.gauge-ticks {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+.gauge-tick {
+  width: 1px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.35);
+}
+.gauge-tick.long {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Precision Nylon Spool Hubs */
+.spool-wrapper {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tape-pack {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #3d271d 65%, #24160f 100%);
+  box-shadow: 0 0 3px rgba(0,0,0,0.8);
+  transition: width 0.3s ease, height 0.3s ease;
+  z-index: 1;
+}
+
+.reel-gear {
+  width: 46px;
+  height: 46px;
+  background: #f8fafc;
+  border-radius: 50%;
+  border: 3px solid #cbd5e1;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.6);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reel-center-hole {
+  width: 18px;
+  height: 18px;
+  background: #0f172a;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,0.9);
+}
+
+.reel-tooth {
+  position: absolute;
+  width: 3.5px;
+  height: 9px;
+  background: #cbd5e1;
+  border-radius: 1px;
+}
+.reel-tooth:nth-child(1) { transform: rotate(0deg) translateY(-13px); }
+.reel-tooth:nth-child(2) { transform: rotate(60deg) translateY(-13px); }
+.reel-tooth:nth-child(3) { transform: rotate(120deg) translateY(-13px); }
+.reel-tooth:nth-child(4) { transform: rotate(180deg) translateY(-13px); }
+.reel-tooth:nth-child(5) { transform: rotate(240deg) translateY(-13px); }
+.reel-tooth:nth-child(6) { transform: rotate(300deg) translateY(-13px); }
+
+/* Reel Animations */
+@keyframes spin-normal {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.reel-playing {
+  animation: spin-normal 4.2s linear infinite;
+}
+.reel-ff {
+  animation: spin-normal 0.65s linear infinite;
+}
+.reel-rw {
+  animation: spin-normal 0.65s linear infinite reverse;
+}
+
+/* Track list preview on label */
+.label-tracklist-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  color: #475569;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 5px;
+}
+
+.track-tag {
+  background: rgba(0,0,0,0.05);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.track-tag.current-tag {
+  background: #0f172a;
+  color: #f8fafc;
+  font-weight: 800;
+}
+
+/* Bottom Tape Path / Trapezoid Cutout */
+.cassette-bottom-notch {
+  width: 250px;
+  height: 20px;
+  background: #0b0d10;
+  margin: 0 auto;
+  border-radius: 3px 3px 0 0;
+  border: 1px solid #1a1e24;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 16px;
+}
+
+.tape-exposed-ribbon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  right: 10px;
+  height: 5px;
+  background: linear-gradient(180deg, #3d271d 0%, #1c100a 100%);
+  transform: translateY(-50%);
+}
+
+.roller-pin {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.7);
+  z-index: 2;
+}
+
+/* ==========================================================================
+   MECHANICAL PIANO LEVER CONTROLS
+   ========================================================================== */
+
+.deck-controls-panel {
+  margin-top: 24px;
+  background: #14161a;
+  border-radius: 8px;
+  padding: 18px 20px;
+  border: 1px solid #282c35;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.deck-buttons-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Milled Aluminum Piano Keys */
+.cassette-btn {
+  width: var(--btn-width);
+  height: var(--btn-height);
+  background: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 80%, #64748b 100%);
+  border: none;
+  border-radius: 4px;
+  border-top: 2px solid #ffffff;
+  border-left: 1px solid #e2e8f0;
+  border-right: 1px solid #64748b;
+  box-shadow:
+    0 8px 0 #334155,
+    0 12px 14px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  transition: transform 0.08s ease-in-out, box-shadow 0.08s ease-in-out;
+  user-select: none;
+  position: relative;
+}
+
+.cassette-btn:hover {
+  filter: brightness(1.04);
+}
+
+.cassette-btn.active,
+.cassette-btn:active {
+  transform: translateY(6px);
+  box-shadow:
+    0 2px 0 #1e293b,
+    0 4px 6px rgba(0,0,0,0.5),
+    inset 0 2px 3px rgba(0,0,0,0.3);
+  filter: brightness(0.96);
+}
+
+.cassette-btn.active {
+  background: linear-gradient(180deg, #94a3b8 0%, #64748b 80%, #475569 100%);
+  border-top-color: #94a3b8;
+}
+
+.btn-icon {
+  font-size: 13px;
+  font-weight: 900;
+  color: #1e293b;
+}
+
+.btn-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #1e293b;
+  text-transform: uppercase;
+}
+
+.btn-play .btn-icon { color: #15803d; }
+.btn-play.active .btn-icon { color: #166534; }
+.btn-stop .btn-icon { color: #b91c1c; }
+.btn-flip .btn-icon { color: #0284c7; }
+
+/* Sub controls row */
+.sub-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid #232730;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hiss-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hiss-toggle-btn {
+  background: #1e2229;
+  border: 1px solid #333944;
+  color: #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.12s ease;
+}
+
+.hiss-toggle-btn:hover {
+  background: #282e38;
+  color: #fff;
+}
+
+.hiss-toggle-btn.active {
+  background: #27303d;
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.hiss-led {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #475569;
+}
+.hiss-toggle-btn.active .hiss-led {
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+}
+
+/* Precision Knurled Sliders (Pitch & Output Level) */
+.pitch-slider-group,
+.volume-slider-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0c0e12;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #22262e;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.7);
+}
+
+.sub-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.12em;
+}
+
+.pitch-val-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 800;
+  color: #38bdf8;
+  min-width: 36px;
+}
+
+.vintage-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 5px;
+  background: #1f232b;
+  border-radius: 2px;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.vintage-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f8fafc 30%, #94a3b8 100%);
+  cursor: pointer;
+  border: 1px solid #475569;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.vintage-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f8fafc 30%, #94a3b8 100%);
+  cursor: pointer;
+  border: 1px solid #475569;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* ==========================================================================
+   CASSETTE J-CARD INSERT / TRACKLIST
+   ========================================================================== */
+
+.jcard-toggle-wrap {
+  width: 100%;
+  max-width: 880px;
+  margin-top: 20px;
+}
+
+.jcard-accordion {
+  background: #14171d;
+  border: 1px solid #2b303a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.jcard-header {
+  padding: 12px 20px;
+  background: #1c2027;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease;
+}
+.jcard-header:hover {
+  background: #232832;
+}
+
+.jcard-header h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #cbd5e1;
+}
+
+.jcard-chevron {
+  transition: transform 0.2s ease;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+.jcard-accordion.open .jcard-chevron {
+  transform: rotate(180deg);
+}
+
+.jcard-content {
+  display: none;
+  padding: 18px 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background: #0f1115;
+  border-top: 1px solid #20242c;
+}
+.jcard-accordion.open .jcard-content {
+  display: grid;
+}
+
+.jcard-side-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: #38bdf8;
+  border-bottom: 1px solid #232730;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.jcard-track-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.jcard-track-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  background: #181b22;
+  padding: 7px 12px;
+  border-radius: 4px;
+  border: 1px solid #262c37;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.jcard-track-item:hover {
+  background: #242a35;
+  border-color: #475569;
+}
+
+.jcard-track-item.active {
+  background: #1e293b;
+  border-color: #38bdf8;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   MODAL DIALOGS (CLEAN TECHNICAL CONSOLE STYLING)
+   ========================================================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 600px;
+  background: #181b21;
+  border: 1px solid #333a46;
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
+  padding: 22px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #282f3a;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+.modal-header h2 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  color: #f8fafc;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-close-btn:hover {
+  color: #fff;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  background: #0e1014;
+  border: 1px solid #282e38;
+  border-radius: 4px;
+  padding: 9px 12px;
+  color: #f8fafc;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  transition: border-color 0.12s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+/* Color & Model Swatches */
+.color-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.color-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0e1014;
+  border: 1px solid #282e38;
+  border-radius: 4px;
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.color-option.selected {
+  border-color: #38bdf8;
+  background: #17202d;
+}
+
+.color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+}
+
+.color-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+/* Sticker Chips */
+.sticker-picker-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sticker-option-chip {
+  background: #0e1014;
+  border: 1px solid #282e38;
+  color: #94a3b8;
+  padding: 5px 8px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.sticker-option-chip.selected {
+  background: #fef08a;
+  color: #854d0e;
+  border-color: #ca8a04;
+}
+
+/* Voice Note Bar */
+.voice-recorder-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0e1014;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #282e38;
+}
+
+.voice-timer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  color: #ef4444;
+  margin-left: auto;
+}
+
+/* Creator Sides Grid */
+.creator-sides-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.side-box {
+  background: #111419;
+  border: 1px solid #232932;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.side-box-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #38bdf8;
+  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+}
+
+.track-input-wrap {
+  margin-bottom: 8px;
+}
+
+.btn-submit-tape {
+  width: 100%;
+  background: linear-gradient(180deg, #c2410c 0%, #9a3412 100%);
+  color: #fff;
+  border: 1px solid #ea580c;
+  border-radius: 4px;
+  padding: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(194, 65, 12, 0.4);
+  transition: all 0.12s ease;
+}
+.btn-submit-tape:hover {
+  background: linear-gradient(180deg, #ea580c 0%, #c2410c 100%);
+}
+
+/* Share Modal Layout */
+.share-modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.qr-container {
+  background: #fff;
+  padding: 12px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.share-link-input-group {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+}
+
+.btn-copy-link {
+  background: #1d4ed8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-copy-link:hover {
+  background: #1e40af;
+}
+
+.share-socials {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.btn-whatsapp {
+  flex: 1;
+  background: #15803d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.btn-whatsapp:hover {
+  background: #166534;
+}
+
+.btn-play-new {
+  flex: 1;
+  background: #d97706;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  padding: 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.btn-play-new:hover {
+  background: #b45309;
+}
+
+/* Virtual Tape Archive Grid */
+.rack-shelf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+  max-height: 440px;
+  overflow-y: auto;
+}
+
+.rack-tape-card {
+  background: #101217;
+  border-radius: 4px;
+  border: 1px solid #242933;
+  border-left: 6px solid #f97316;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.12s ease;
+}
+
+.rack-tape-card:hover {
+  border-color: #38bdf8;
+  background: #151922;
+}
+
+.rack-tape-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.rack-tape-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #f8fafc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rack-tape-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.btn-rack-play {
+  background: #1d4ed8;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-rack-delete {
+  background: transparent;
+  color: #475569;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.btn-rack-delete:hover {
+  color: #ef4444;
+}
+
+/* Toast Notification (Industrial Status Indicator) */
+.toast-notice {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #0f1216;
+  color: #f8fafc;
+  border: 1px solid #333a46;
+  padding: 9px 18px;
+  border-radius: 4px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.7);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  z-index: 2000;
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast-notice.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Hidden YouTube Player */
+#yt-player-container {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0.001;
+  pointer-events: none;
+}
+
+/* Responsive Mobile Layout */
+@media (max-width: 680px) {
+  :root {
+    --btn-width: 58px;
+    --btn-height: 48px;
+  }
+
+  .deck-container {
+    padding: 16px 12px;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .header-actions {
+    justify-content: space-between;
+  }
+
+  .deck-top-panel {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    justify-items: center;
+  }
+
+  .vu-meters-cluster {
+    justify-content: center;
+  }
+
+  .cassette-flipper {
+    width: 320px;
+    height: 200px;
+  }
+
+  .tape-window-container {
+    width: 210px;
+    height: 60px;
+    padding: 0 14px;
+  }
+
+  .spool-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+
+  .reel-gear {
+    width: 30px;
+    height: 30px;
+  }
+
+  .reel-tooth {
+    height: 6px;
+  }
+
+  .label-title-text {
+    font-size: 0.95rem;
+  }
+
+  .creator-sides-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deck-buttons-row {
+    gap: 8px;
+  }
+}
