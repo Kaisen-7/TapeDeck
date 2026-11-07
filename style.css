@@ -806,6 +806,18 @@ body.mode-midnight .deck-container {
    THE 3D CASSETTE TAPE (HIGH-END CASSETTE HOUSING)
    ========================================================================== */
 
+/* Cassette Scale Wrapper — handles uniform proportional scaling on mobile.
+   cassette-flipper stays at original 580×350px; this wrapper scales it
+   uniformly so it looks IDENTICAL to desktop, just proportionally smaller. */
+.cassette-scale-wrapper {
+  width: 580px;
+  height: 350px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .cassette-flipper {
   width: 580px;
   height: 350px;
@@ -1949,9 +1961,25 @@ body.mode-midnight .deck-container {
     height: 290px;
   }
 
+  /* Scale wrapper: at ≤860px reduce very slightly to fit narrower bays */
+  .cassette-scale-wrapper {
+    transform: scale(0.90);
+    /* Collapse layout: 580*(0.90-1)/2 = -29px · 350*(0.90-1)/2 = -17.5px */
+    margin: -17px -29px;
+  }
+
   .tape-window-container {
     width: 265px;
     height: 76px;
+  }
+
+  /* Pencil positions (spool ±94px × 0.90 = ±85px) */
+  .pencil-crank-actor {
+    left: calc(50% - 85px);
+    height: 144px; /* 160 × 0.90 */
+  }
+  .pencil-crank-actor.target-right {
+    left: calc(50% + 85px);
   }
 }
 
@@ -2067,68 +2095,26 @@ body.mode-midnight .deck-container {
   /* ─ Cassette Bay ─ */
   .cassette-bay {
     padding: 14px 8px;
-    min-height: 260px;
+    min-height: 300px; /* 350 × 0.80 + 28px padding */
     border-radius: 8px;
   }
 
-  .cassette-flipper {
-    width: 300px;
-    height: 182px;
+  /* Scale wrapper: fills the mobile bay proportionally.
+     At ~480-600px viewport: bay ≈ 420-544px → scale = bay/580 ≈ 0.80
+     Margin compensation: 580*(0.80-1)/2=-58px · 350*(0.80-1)/2=-35px */
+  .cassette-scale-wrapper {
+    transform: scale(0.80);
+    margin: -35px -58px;
   }
 
-  /* Cassette label fonts */
-  .label-title-text {
-    font-size: 0.8rem;
-  }
-
-  .label-from-text {
-    font-size: 0.65rem;
-  }
-
-  .label-side-stamp {
-    font-size: 0.6rem;
-  }
-
-  .label-tape-brand {
-    font-size: 0.55rem;
-  }
-
-  /* Tape window & spools */
-  .tape-window-container {
-    width: 180px;
-    height: 54px;
-    padding: 0 10px;
-  }
-
-  .spool-wrapper {
-    width: 42px;
-    height: 42px;
-  }
-
-  .reel-gear {
-    width: 28px;
-    height: 28px;
-  }
-
-  .tape-pack {
-    width: 42px !important;
-    height: 42px !important;
-  }
-
-  /* Cassette bottom notch */
-  .cassette-bottom-notch {
-    width: 180px;
-  }
-
-  /* Pencil actor: scale down */
+  /* Pencil positions (spool ±94px × 0.80 = ±75px) */
   .pencil-crank-actor {
-    height: 110px;
-    width: 18px;
-    left: calc(50% - 60px);
+    height: 128px; /* 160 × 0.80 */
+    width: 20px;
+    left: calc(50% - 75px);
   }
-
   .pencil-crank-actor.target-right {
-    left: calc(50% + 60px);
+    left: calc(50% + 75px);
   }
 
   /* ─ Transport Controls ─ */
@@ -2242,6 +2228,29 @@ body.mode-midnight .deck-container {
   }
 }
 
+/* ── MID-MOBILE  (≤ 480px) ────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Scale wrapper: at ~390-480px viewport: bay ≈ 334-424px → scale ≈ 0.73
+     Margin: 580*(0.73-1)/2 = -78.3px · 350*(0.73-1)/2 = -47.25px */
+  .cassette-scale-wrapper {
+    transform: scale(0.73);
+    margin: -47px -78px;
+  }
+
+  .cassette-bay {
+    min-height: 284px; /* 350 × 0.73 + 28px */
+  }
+
+  /* Pencil positions (spool ±94px × 0.73 = ±69px) */
+  .pencil-crank-actor {
+    height: 117px; /* 160 × 0.73 */
+    left: calc(50% - 69px);
+  }
+  .pencil-crank-actor.target-right {
+    left: calc(50% + 69px);
+  }
+}
+
 /* ── EXTRA SMALL  (≤ 390px) ───────────────────────────────────── */
 @media (max-width: 390px) {
   :root {
@@ -2258,29 +2267,24 @@ body.mode-midnight .deck-container {
     padding: 5px 7px;
   }
 
-  .cassette-flipper,
-  .cassette-side {
-    width: 270px;
-    height: 164px;
+  /* Scale wrapper: at ~390px viewport: bay ≈ 334px → scale = 334/580 ≈ 0.58
+     Margin: 580*(0.58-1)/2 = -121.8px · 350*(0.58-1)/2 = -73.5px */
+  .cassette-scale-wrapper {
+    transform: scale(0.58);
+    margin: -74px -122px;
   }
 
-  .spool-wrapper {
-    width: 36px;
-    height: 36px;
+  .cassette-bay {
+    min-height: 235px; /* 350 × 0.58 + 28px */
   }
 
-  .reel-gear {
-    width: 24px;
-    height: 24px;
-  }
-
+  /* Pencil positions (spool ±94px × 0.58 = ±55px) */
   .pencil-crank-actor {
-    height: 90px;
-    left: calc(50% - 50px);
+    height: 93px; /* 160 × 0.58 */
+    left: calc(50% - 55px);
   }
-
   .pencil-crank-actor.target-right {
-    left: calc(50% + 50px);
+    left: calc(50% + 55px);
   }
 
   .vu-meter {
