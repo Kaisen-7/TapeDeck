@@ -1918,72 +1918,401 @@ body.mode-midnight .deck-container {
   pointer-events: none;
 }
 
-/* Responsive Mobile Layout */
-@media (max-width: 680px) {
-  :root {
-    --btn-width: 58px;
-    --btn-height: 48px;
-  }
+/* ==========================================================================
+   RESPONSIVE SYSTEM — TABLET · MOBILE · EXTRA-SMALL
+   ========================================================================== */
 
-  .deck-container {
-    padding: 16px 12px;
-  }
-
-  .app-header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    padding: 12px 14px;
-  }
-
-  .header-actions {
-    justify-content: space-between;
-  }
-
+/* ── TABLET / SMALL LAPTOP  (≤ 860px) ─────────────────────────── */
+@media (max-width: 860px) {
   .deck-top-panel {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    justify-items: center;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    gap: 14px;
+  }
+
+  .led-indicators-cluster {
+    grid-column: 1 / -1;
+    justify-content: center;
   }
 
   .vu-meters-cluster {
     justify-content: center;
   }
 
+  .vfd-track-screen {
+    min-width: 0;
+    width: 100%;
+  }
+
   .cassette-flipper {
-    width: 320px;
-    height: 200px;
+    width: 480px;
+    height: 290px;
+  }
+
+  .cassette-side {
+    width: 480px;
+    height: 290px;
   }
 
   .tape-window-container {
-    width: 210px;
-    height: 60px;
-    padding: 0 14px;
+    width: 265px;
+    height: 76px;
+  }
+}
+
+/* ── MOBILE PHONES  (≤ 600px) ─────────────────────────────────── */
+@media (max-width: 600px) {
+  :root {
+    --btn-width: 54px;
+    --btn-height: 46px;
   }
 
-  .spool-wrapper {
-    width: 44px;
+  /* Layout & Spacing */
+  body {
+    padding: 16px 10px 48px;
+  }
+
+  /* ─ Header ─ */
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .brand-title {
+    gap: 8px;
+  }
+
+  .brand-text h1 {
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+  }
+
+  .brand-meta {
+    font-size: 0.6rem;
+  }
+
+  .brand-text p {
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+  }
+
+  .header-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+
+  .header-btn {
+    padding: 6px 10px;
+    font-size: 0.65rem;
+    gap: 5px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* ─ Deck Chassis ─ */
+  .deck-container {
+    padding: 14px 10px 18px;
+    border-radius: 8px;
+  }
+
+  /* ─ Top Panel: stack vertically ─ */
+  .deck-top-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 10px;
+    margin-bottom: 16px;
+  }
+
+  /* VU Meters: smaller */
+  .vu-meters-cluster {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .vu-meter {
+    width: 108px;
+    height: 54px;
+  }
+
+  .vu-needle {
     height: 44px;
   }
 
-  .reel-gear {
-    width: 30px;
-    height: 30px;
+  /* VFD Display */
+  .vfd-track-screen {
+    min-width: 0;
+    width: 100%;
+    padding: 6px 10px;
   }
 
-  .reel-tooth {
-    height: 6px;
+  .vfd-title {
+    font-size: 10px;
   }
 
+  .vfd-sub {
+    font-size: 7.5px;
+  }
+
+  /* Counter + LED: side by side */
+  .tape-counter-box {
+    padding: 4px 10px;
+    gap: 5px;
+  }
+
+  .led-indicators-cluster {
+    gap: 10px;
+  }
+
+  /* ─ Cassette Bay ─ */
+  .cassette-bay {
+    padding: 14px 8px;
+    min-height: 260px;
+    border-radius: 8px;
+  }
+
+  .cassette-flipper {
+    width: 300px;
+    height: 182px;
+  }
+
+  .cassette-side {
+    width: 300px;
+    height: 182px;
+  }
+
+  /* Cassette label fonts */
   .label-title-text {
-    font-size: 0.95rem;
+    font-size: 0.8rem;
   }
 
-  .creator-sides-grid {
-    grid-template-columns: 1fr;
+  .label-from-text {
+    font-size: 0.65rem;
+  }
+
+  .label-side-stamp {
+    font-size: 0.6rem;
+  }
+
+  .label-tape-brand {
+    font-size: 0.55rem;
+  }
+
+  /* Tape window & spools */
+  .tape-window-container {
+    width: 180px;
+    height: 54px;
+    padding: 0 10px;
+  }
+
+  .spool-wrapper {
+    width: 42px;
+    height: 42px;
+  }
+
+  .reel-gear {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tape-pack {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  /* Cassette bottom notch */
+  .cassette-bottom-notch {
+    width: 180px;
+  }
+
+  /* Pencil actor: scale down */
+  .pencil-crank-actor {
+    height: 110px;
+    width: 18px;
+    left: calc(50% - 60px);
+  }
+
+  .pencil-crank-actor.target-right {
+    left: calc(50% + 60px);
+  }
+
+  /* ─ Transport Controls ─ */
+  .deck-controls-panel {
+    padding: 12px 10px;
+    gap: 12px;
+    margin-top: 16px;
   }
 
   .deck-buttons-row {
-    gap: 8px;
+    gap: 7px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Sub controls: stack on mobile */
+  .sub-controls-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 10px;
+  }
+
+  .hiss-toggle-group {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .hiss-toggle-btn {
+    font-size: 0.65rem;
+    padding: 5px 10px;
+  }
+
+  .pitch-slider-group,
+  .volume-slider-group {
+    padding: 4px 8px;
+  }
+
+  .vintage-slider {
+    width: 70px;
+  }
+
+  /* Share button full width */
+  .btn-share-current {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ─ J-Card ─ */
+  .jcard-content {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px 12px;
+  }
+
+  .jcard-header {
+    padding: 10px 14px;
+  }
+
+  /* ─ Modals ─ */
+  .modal-overlay {
+    padding: 10px;
+    align-items: flex-end;
+  }
+
+  .modal-card {
+    max-height: 92vh;
+    border-radius: 8px 8px 0 0;
+    padding: 16px 14px;
+  }
+
+  .modal-header h2 {
+    font-size: 0.9rem;
+  }
+
+  /* Creator: single column */
+  .creator-sides-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* Color & sticker pickers */
+  .color-picker-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Rack */
+  .rack-shelf-grid {
+    grid-template-columns: 1fr;
+    max-height: 320px;
+  }
+
+  /* Toast */
+  .toast-notice {
+    font-size: 0.7rem;
+    padding: 8px 14px;
+    max-width: calc(100vw - 32px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Share modal */
+  .share-link-input-group {
+    flex-direction: column;
+  }
+
+  .share-link-input-group input {
+    width: 100%;
+  }
+}
+
+/* ── EXTRA SMALL  (≤ 390px) ───────────────────────────────────── */
+@media (max-width: 390px) {
+  :root {
+    --btn-width: 46px;
+    --btn-height: 42px;
+  }
+
+  .brand-text h1 {
+    font-size: 0.95rem;
+  }
+
+  .header-btn {
+    font-size: 0.6rem;
+    padding: 5px 7px;
+  }
+
+  .cassette-flipper,
+  .cassette-side {
+    width: 270px;
+    height: 164px;
+  }
+
+  .tape-window-container {
+    width: 155px;
+    height: 48px;
+    padding: 0 8px;
+  }
+
+  .spool-wrapper {
+    width: 36px;
+    height: 36px;
+  }
+
+  .reel-gear {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pencil-crank-actor {
+    height: 90px;
+    left: calc(50% - 50px);
+  }
+
+  .pencil-crank-actor.target-right {
+    left: calc(50% + 50px);
+  }
+
+  .vu-meter {
+    width: 90px;
+    height: 46px;
+  }
+
+  .deck-buttons-row {
+    gap: 5px;
+  }
+
+  .btn-caption {
+    font-size: 7px;
+  }
+
+  .btn-icon {
+    font-size: 11px;
   }
 }
